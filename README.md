@@ -60,7 +60,7 @@ Done updating config.json.
 
 # Missing Manuals
 
-This project was originally created against ghidra 10.1.2 which had the 6805 processor folder which apparently no longer exists. If you get a warning about 
+This project was originally created against ghidra 10.1.2 which had the 6805 processor folder which apparently no longer exists. If you get a warning about missing the 6805 folder, that's why.
 
 Currently the only missing manuals are:
  - HCS12 -- S12XCPUV2.pdf
