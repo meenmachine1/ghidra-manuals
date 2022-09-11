@@ -25,9 +25,9 @@ def check_folder_exists(folder_path, make=False):
     return False
 
 def check_file_is_pdf(file_path):
-    t = filetype.guess(file_path)
+    t = filetype.guess(file_path).mime
 
-    return 'pdf' == t if t is not None else False
+    return 'pdf' in t if t is not None else False
 
 def download_pdf_and_store(urls, filename, file_path):
     pdf_content = None
@@ -36,6 +36,7 @@ def download_pdf_and_store(urls, filename, file_path):
 
     pdf_save_filepath = f"{SAVE_DIR}/{filename}"
     for url in urls:
+        # Check return code to make sure it was a success
         try:
             pdf_content = requests.get(url).content
 
@@ -44,6 +45,8 @@ def download_pdf_and_store(urls, filename, file_path):
 
             if check_file_is_pdf(pdf_save_filepath):
                 break
+            else:
+                print(f"File in url: {url} is not a PDF.")
         except Exception as e:
             print("Could not open url: {}")
 

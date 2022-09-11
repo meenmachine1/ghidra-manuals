@@ -4,235 +4,355 @@
             "info": "PA-RISC 1.1 Architecture and Instruction Set Reference Manual, HP Part Number: 09740-90039, February 1994, Third Edition",
             "path": "./Ghidra/Processors/PA-RISC/data/manuals/",
             "filename": "pa11_acd.pdf",
-            "urls": []
+            "urls": [
+                "https://parisc.wiki.kernel.org/images-parisc/6/68/Pa11_acd.pdf",
+                "http://ftp.parisc-linux.org/docs/arch/pa11_acd.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/pa11_acd.pdf"
+            ]
         },
         {
             "info": "ARM Architecture Reference Manual - ARMv7A and ARMv7-R edition Errata markup, July, 2011 (ARM DDI 0406B_errata_2011_Q2)",
             "path": "./Ghidra/Processors/ARM/data/manuals/",
             "filename": "Armv7AR_errata.pdf",
-            "urls": ["https://www.cs.utexas.edu/~simon/378/resources/ARMv7-AR_TRM.pdf"]
+            "urls": [
+                "https://www.cs.utexas.edu/~simon/378/resources/ARMv7-AR_TRM.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/Armv7AR_errata.pdf"
+            ]
         },
         {
             "info": "TI MSP430x2xx Family User's Guide, 2008, SLAU144E",
             "path": "./Ghidra/Processors/TI_MSP430/data/manuals/",
             "filename": "MSP430.pdf",
-            "urls": []
+            "urls": [
+                "https://academics.uccs.edu/mlaubhan/common/MSP430/slau144e.pdf",
+                "https://e2echina.ti.com/cfs-file/__key/telligent-evolution-components-attachments/00-55-01-00-00-00-61-61/MSP430x2xx-Family-User_26002300_39_3B00_s-Guide-_2800_Rev.-E_2900_.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/MSP430.pdf"
+            ]
         },
         {
             "info": " Rev. 4 02/2006 M68HC08 Microcontrollers, NXP.com ",
             "path": "./Ghidra/Processors/HCS08/data/manuals/",
             "filename": "CPU08RM.pdf",
-            "urls": []
+            "urls": [
+                "https://www.nxp.com/files-static/microcontrollers/doc/ref_manual/CPU08RM.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/CPU08RM.pdf"
+            ]
         },
         {
             "info": " Rev. 2 05/2007 M68HCS08 Microcontrollers, NXP.com ",
             "path": "./Ghidra/Processors/HCS08/data/manuals/",
             "filename": "HCS08RMV1.pdf",
-            "urls": []
+            "urls": [
+                "https://www.nxp.com/files-static/microcontrollers/doc/ref_manual/HCS08RMV1.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/HCS08RMV1.pdf"
+            ]
         },
         {
             "info": " Rev. 2.0 1998 M68HC05 Family, Understanding Small Microcontrollers, NXP.com ",
             "path": "./Ghidra/Processors/HCS08/data/manuals/",
             "filename": "M68HC05TB.pdf",
-            "urls": []
+            "urls": [
+                "https://www.nxp.com/files-static/microcontrollers/doc/ref_manual/M68HC05TB.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/M68HC05TB.pdf"
+            ]
         },
         {
             "info": "MCS 6500 Microcomputer Family Programming Manual, January 1976",
             "path": "./Ghidra/Processors/6502/data/manuals/",
             "filename": "mcs6500_family_programming_manual.pdf",
-            "urls": []
+            "urls": [
+                "https://ia803402.us.archive.org/14/items/mcs-6500-family-hardware-manual-1976-01/MCS6500_family_hardware_manual_1976-01.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/mcs6500_family_programming_manual.pdf"
+            ]
         },
         {
             "info": "Programming the 65816 - Including the 6502, 65C02 and 65802, 2007",
             "path": "./Ghidra/Processors/6502/data/manuals/",
             "filename": "wdc_65816_programming_manual.pdf",
-            "urls": []
+            "urls": [
+                "http://archive.6502.org/datasheets/wdc_65816_programming_manual.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/wdc_65816_programming_manual.pdf"
+            ]
         },
         {
             "info": " Texas Instruments (formerly National Semiconductor), CompactRISC, CR16C Programmer\u2019s Reference Manual. Part Number: 424521772-101. ",
             "path": "./Ghidra/Processors/CR16/data/manuals/",
             "filename": "prog16c.pdf",
-            "urls": []
+            "urls": [
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/prog16c.pdf"
+            ]
         },
         {
             "info": "ARM Architecture Reference Manual - ARMv8, for ARMv8-A architecture profile, 22 July 2021 (ARM DDI DDI0487G.b)",
             "path": "./Ghidra/Processors/AARCH64/data/manuals/",
             "filename": "DDI0487G_b_armv8_arm.pdf",
-            "urls": []
+            "urls": [
+                "http://kib.kiev.ua/x86docs/ARM/ARMARMv8/DDI0487G_b_armv8_arm.pdf"
+            ]
         },
         {
             "info": "1991 Intel 16-Bit Embedded Controller Handbook",
             "path": "./Ghidra/Processors/MCS96/data/manuals/",
             "filename": "1991_Intel_16-Bit_Embedded_Controller_Handbook.pdf",
-            "urls": []
+            "urls": [
+                "http://www.bitsavers.org/components/intel/_dataBooks/1991_Intel_16-Bit_Embedded_Controller_Handbook.pdf",
+                "https://ia804505.us.archive.org/18/items/bitsavers_inteldataBmbeddedControllerHandbook_44609783/1991_Intel_16-Bit_Embedded_Controller_Handbook.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/1991_Intel_16-Bit_Embedded_Controller_Handbook.pdf"
+            ]
         },
         {
             "info": "V850E2M User?s Manual: Architecture RENESAS MCU V850E2M Microprocessor Core",
             "path": "./Ghidra/Processors/V850/data/manuals/",
             "filename": "r01us0001ej0100_v850e2m.pdf",
-            "urls": []
+            "urls": [
+                "https://web.archive.org/web/20180127202640if_/https://www.renesas.com/en-us/doc/products/mpumcu/doc/v850/r01us0001ej0100_v850e2m.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/r01us0001ej0100_v850e2m.pdf"
+            ]
         },
         {
             "info": "PIC18CXX2 High-Performance Microcontrollers with 10-Bit A/D, 7/99 (DS39026B)",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "PIC18_14702.pdf",
-            "urls": []
+            "urls": [
+                "https://www.farnell.com/datasheets/22241.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PIC18_14702.pdf"
+            ]
         },
         {
             "info": "Microchip PIC16LF1554/1559 (DS40001761E)",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "PIC16F_40001761E.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/DeviceDoc/40001761E.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PIC16F_40001761E.pdf"
+            ]
         },
         {
             "info": "16-bit MCU and DSC Programmer's Reference Manual - DS70000157G",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "70000157g.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/DeviceDoc/70000157g.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/70000157g.pdf"
+            ]
         },
         {
             "info": "PICmicro\ufffd Mid-Range MCU Family Reference Manual, December 1997 (DS33023A)",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "PIC16_33023a.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/devicedoc/33023a.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PIC16_33023a.pdf"
+            ]
         },
         {
             "info": "High-Performance 8-bit CMOS EPROM Microcontrollers with 10-bit A/D, 2000 (DS30289B)",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "PIC17_30289b.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/devicedoc/30289b.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PIC17_30289b.pdf"
+            ]
         },
         {
             "info": "PIC12C5XX 8-Pin, 8-Bit CMOS Microcontrollers (DS40139E)",
             "path": "./Ghidra/Processors/PIC/data/manuals/",
             "filename": "PIC12_40139e.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/devicedoc/40139e.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PIC12_40139e.pdf"
+            ]
         },
         {
             "info": "MCS-48 Microcomputer User's Manual, February 1978",
             "path": "./Ghidra/Processors/8048/data/manuals/",
             "filename": "8048.pdf",
-            "urls": []
+            "urls": [
+                "https://original.sharpmz.org/download/8048.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/8048.pdf"
+            ]
         },
         {
             "info": "MIPS R4000 Microprocessor User's Manual, Second Edition, July 2005",
             "path": "./Ghidra/Processors/MIPS/data/manuals/",
             "filename": "r4000.pdf",
-            "urls": []
+            "urls": [
+                "https://groups.csail.mit.edu/cag/raw/documents/R4400_Uman_book_Ed2.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/r4000.pdf"
+            ]
         },
         {
             "info": "MIPS Architecture For Programmers Volume II-A: The MIPS64 Instruction Set Reference Manual, MD00087, 6.06, December 15, 2016",
             "path": "./Ghidra/Processors/MIPS/data/manuals/",
             "filename": "MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
-            "urls": []
+            "urls": [
+                "https://s3-eu-west-1.amazonaws.com/downloads-mips/documents/MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/MD00087-2B-MIPS64BIS-AFP-6.06.pdf"
+            ]
         },
         {
             "info": "MIPS64 Architecture For Programmers - Volume II, July 2005 (MD00087)",
             "path": "./Ghidra/Processors/MIPS/data/manuals/",
             "filename": "mips64v2.pdf",
-            "urls": []
+            "urls": [
+                "http://electro.fisica.unlp.edu.ar/arq/downloads/Software/WinMIPS64/MIPS64%20Architecture%20For%20Programmers%20Volume%20II:%20The%20MIPS64%20Instruction%20Set.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/mips64v2.pdf"
+            ]
         },
         {
             "info": "MIPS Architecture For Programmers Volume II-A: The MIPS64 Instruction Set Reference Manual, MD00087, 6.06, December 15, 2016",
             "path": "./Ghidra/Processors/MIPS/data/manuals/",
             "filename": "MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
-            "urls": []
+            "urls": [
+                "https://s3-eu-west-1.amazonaws.com/downloads-mips/documents/MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/MD00087-2B-MIPS64BIS-AFP-6.06.pdf"
+            ]
         },
         {
             "info": " CPU12/CPU12X Reference Manual, Rev. v01.04 21 Apr. 2016, nxp.com ",
             "path": "./Ghidra/Processors/HCS12/data/manuals/",
             "filename": "S12XCPUV2.pdf",
-            "urls": []
+            "urls": [
+
+            ]
         },
         {
             "info": "Z80 FamilyCPU User Manual, Aug 2016 (UM008011-0816)",
             "path": "./Ghidra/Processors/Z80/data/manuals/",
             "filename": "UM0080.pdf",
-            "urls": []
+            "urls": [
+                "https://www.zilog.com/force_download.php?filepath=YUhSMGNEb3ZMM2QzZHk1NmFXeHZaeTVqYjIwdlpHOWpjeTk2T0RBdlZVMHdNRGd3TG5Ca1pnPT0=",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/UM0080.pdf"
+            ]
         },
         {
             "info": "Z8018x Family MPU User Manual (UM005003-0703)",
             "path": "./Ghidra/Processors/Z80/data/manuals/",
             "filename": "um0050.pdf",
-            "urls": []
+            "urls": [
+                "https://www.naic.edu/~phil/td/um0050.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/um0050.pdf"
+            ]
         },
         {
             "info": "MC6809-MC6809E Microprocessor Programming Manual, May 1983 (M6809PM/AD)",
             "path": "./Ghidra/Processors/6805/data/manuals/",
             "filename": "M6809PM.rev0_May83.pdf",
-            "urls": []
+            "urls": [
+                "http://www.bitsavers.org/components/motorola/6809/M6809PM.rev0_May83.pdf",
+                "https://archive.org/download/bitsavers_motorola68_13419254/M6809PM.rev0_May83.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/M6809PM.rev0_May83.pdf"
+            ]
         },
         {
             "info": "SH-4 Software Manual Rev 6.00 2006.09",
             "path": "./Ghidra/Processors/SuperH4/data/manuals/",
             "filename": "rej09b0318_sh_4sm.pdf",
-            "urls": []
+            "urls": [
+                "https://web.archive.org/web/20121126051215if_/http://documentation.renesas.com/doc/products/mpumcu/rej09b0318_sh_4sm.pdf",
+                "http://documentation.renesas.com/doc/products/mpumcu/rej09b0318_sh_4sm.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/rej09b0318_sh_4sm.pdf"
+            ]
         },
         {
             "info": "TriCore Architecture Volume 2: Instruction Set, V1.3 & V1.3.1",
             "path": "./Ghidra/Processors/tricore/data/manuals/",
             "filename": "tc_v131_instructionset_v138.pdf",
-            "urls": []
+            "urls": [
+                "https://www.infineon.com/dgdl/tc_v131_instructionset_v138.pdf?fileId=db3a304412b407950112b409b6dd0352",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/tc_v131_instructionset_v138.pdf"
+            ]
         },
         {
             "info": "TriCore TC1.6P & TC1.6E Instruction Set, User Manual (Volume 2), V1.0 2013-07",
             "path": "./Ghidra/Processors/tricore/data/manuals/",
             "filename": "Infineon-TC2xx_Architecture_vol2-UM-v01_00-EN.pdf",
-            "urls": []
+            "urls": [
+                "https://www.infineon.com/dgdl/Infineon-TC2xx_Architecture_vol2-UM-v01_00-EN.pdf?fileId=5546d46269bda8df0169ca1bf33124a8",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/Infineon-TC2xx_Architecture_vol2-UM-v01_00-EN.pdf"
+            ]
         },
         {
             "info": "Atmel AVR32 Architecture Document - 04/2011",
             "path": "./Ghidra/Processors/Atmel/data/manuals/",
             "filename": "doc32000.pdf",
-            "urls": []
+            "urls": [
+                "https://ww1.microchip.com/downloads/en/devicedoc/doc32000.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/doc32000.pdf"
+            ]
         },
         {
             "info": "Atmel AVR Instruction Set Manual, 11/2016 (Rev. 0856L)",
             "path": "./Ghidra/Processors/Atmel/data/manuals/",
             "filename": "atmel-0856-avr-instruction-set-manual.pdf",
-            "urls": []
+            "urls": [
+                "http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/atmel-0856-avr-instruction-set-manual.pdf"
+            ]
         },
         {
             "info": "PowerPC\u00ae Microprocessor Family: The Programming Environments Manual for 32 and 64-bit Microprocessors, Version 2.3, March 31, 2005",
             "path": "./Ghidra/Processors/PowerPC/data/manuals/",
             "filename": "PowerISA_V2.06_PUBLIC.pdf",
-            "urls": []
+            "urls": [
+                "http://kib.kiev.ua/x86docs/POWER/PowerISA_V2.06B_V2_PUBLIC.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/PowerISA_V2.06_PUBLIC.pdf"
+            ]
         },
         {
             "info": "PowerPC\ufffd Microprocessor Family: The Programming Environments Manual for 32 and 64-bit Microprocessors, Version 2.3, March 31, 2005",
             "path": "./Ghidra/Processors/PowerPC/data/manuals/",
             "filename": "powerpc.pdf",
-            "urls": []
+            "urls": [
+                "https://wiki.alcf.anl.gov/images/f/fb/PowerPC_-_Assembly_-_IBM_Programming_Environment_2.3.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/powerpc.pdf"
+            ]
         },
         {
             "info": "Intel 64 and IA-32 Architectures Software Developer's Manual Volume 2 (2A, 2B, 2C & 2D): Instruction Set Reference, A-Z, Oct 2019 (325383-071US)",
             "path": "./Ghidra/Processors/x86/data/manuals/",
             "filename": "325383-sdm-vol-2abcd.pdf",
-            "urls": []
+            "urls": [
+                "https://community.intel.com/legacyfs/online/drupal_files/managed/a4/60/325383-sdm-vol-2abcd.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/325383-sdm-vol-2abcd.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/325383-sdm-vol-2abcd.pdf"
+            ]
         },
         {
             "info": "8XC251SA, 8XC251SB,8XC251SP, 8XC251SQ Embedded Microcontroller User\ufffds Manual, May 1996",
             "path": "./Ghidra/Processors/8051/data/manuals/",
             "filename": "8xc251sx_um.pdf",
-            "urls": []
+            "urls": [
+                "https://www.keil.com/dd/docs/datashts/intel/8xc251sx_um.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/8xc251sx_um.pdf"
+            ]
         },
         {
             "info": "M68000 FAMILY Programmer\ufffds Reference Manual, 1992 (M68000PRM/AD REV.1)",
             "path": "./Ghidra/Processors/68000/data/manuals/",
             "filename": "M68000PRM.pdf",
-            "urls": []
+            "urls": [
+                "https://www.nxp.com/files-static/archives/doc/ref_manual/M68000PRM.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/M68000PRM.pdf"
+            ]
         },
         {
             "info": "The SPARC Architecture Manual, Version 9 (SAV09R1459912)",
             "path": "./Ghidra/Processors/Sparc/data/manuals/",
             "filename": "SPARCV9.pdf",
-            "urls": []
+            "urls": [
+                "https://cr.yp.to/2005-590/sparcv9.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/SPARCV9.pdf"
+            ]
         },
         {
             "info": "The Java Virtual Machine Specification - Jave SE 8 Edition",
             "path": "./Ghidra/Processors/JVM/data/manuals/",
             "filename": "jvms8.pdf",
-            "urls": []
+            "urls": [
+                "https://docs.oracle.com/javase/specs/jvms/se8/jvms8.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/jvms8.pdf"
+            ]
         }
     ]
 }

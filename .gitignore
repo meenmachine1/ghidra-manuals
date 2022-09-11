@@ -3,3 +3,6 @@ pdfs/
 __pycache__/
 
 !**/.gitempty
+
+# Mac BS
+.DS_Store
