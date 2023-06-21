@@ -200,20 +200,12 @@
             ]
         },
         {
-            "info": "MIPS Architecture For Programmers Volume II-A: The MIPS64 Instruction Set Reference Manual, MD00087, 6.06, December 15, 2016",
-            "path": "./Ghidra/Processors/MIPS/data/manuals/",
-            "filename": "MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
-            "urls": [
-                "https://s3-eu-west-1.amazonaws.com/downloads-mips/documents/MD00087-2B-MIPS64BIS-AFP-6.06.pdf",
-                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/MD00087-2B-MIPS64BIS-AFP-6.06.pdf"
-            ]
-        },
-        {
             "info": " CPU12/CPU12X Reference Manual, Rev. v01.04 21 Apr. 2016, nxp.com ",
             "path": "./Ghidra/Processors/HCS12/data/manuals/",
             "filename": "S12XCPUV2.pdf",
             "urls": [
-
+                "http://www.ee.nmt.edu/~erives/308L_11/S12CPUV2.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/S12CPUV2.pdf"
             ]
         },
         {
@@ -352,6 +344,34 @@
             "urls": [
                 "https://docs.oracle.com/javase/specs/jvms/se8/jvms8.pdf",
                 "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/jvms8.pdf"
+            ]
+        },
+        {
+            "info": "ARM Architecture Reference Manual - ARM A-profile architecture, December 2021 (ARM DDI 0487H.a)",
+            "path": "./Ghidra/Processors/AARCH64/data/manuals/",
+            "filename": "DDI0487H_a_a-profile_architecture_reference_manual.pdf",
+            "urls": [
+                "https://documentation-service.arm.com/static/644a406baa78c007af74e6fd",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/DDI0487J_a_a-profile_architecture_reference_manual.pdf"
+            ]
+        },
+        {
+            "info": "MC6809-MC6809E Microprocessor Programming Manual, May 1983 (M6809PM/AD)",
+            "path": "./Ghidra/Processors/MC6800/data/manuals/",
+            "filename": "M6809PM.rev0_May83.pdf",
+            "urls": [
+                "http://www.bitsavers.org/components/motorola/6809/M6809PM.rev0_May83.pdf",
+                "https://archive.org/download/bitsavers_motorola68_13419254/M6809PM.rev0_May83.pdf",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/M6809PM.rev0_May83.pdf"
+            ]
+        },
+        {
+            "info": "ARM Architecture Reference Manual - ARM A-profile architecture, December 2021 (ARM DDI 0487H.a)",
+            "path": "./Ghidra/Processors/ARM/data/manuals/",
+            "filename": "DDI0487H_a_a-profile_architecture_reference_manual.pdf",
+            "urls": [
+                "https://documentation-service.arm.com/static/644a406baa78c007af74e6fd",
+                "https://github.com/meenmachine1/ghidra-processor-manuals/raw/main/DDI0487J_a_a-profile_architecture_reference_manual.pdf"
             ]
         }
     ]

@@ -2,6 +2,9 @@
 pdfs/
 __pycache__/
 
+#virtualenv
+.venv
+
 !**/.gitempty
 
 # Mac BS

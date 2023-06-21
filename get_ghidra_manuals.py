@@ -70,8 +70,8 @@ def get_idx_files_headers(ghidra_path, current_config={}):
 
     if current_config:
         # Yes this whole else statement is a disgustingly slow solve but I'm tired of this ish. Sorry
-        filenames_current = set([manual["filename"] for manual in current_config["manuals"]])
-        filenames_new = set([manual["filename"] for manual in new_config["manuals"]])
+        filenames_current = set([manual["path"] + manual["filename"] for manual in current_config["manuals"]])
+        filenames_new = set([manual["path"] + manual["filename"] for manual in new_config["manuals"]])
 
         missing_filenames = set(filenames_new) - set(filenames_current)
 
@@ -82,7 +82,7 @@ def get_idx_files_headers(ghidra_path, current_config={}):
         for missing_filename in missing_filenames:
             missing_manual = None
             for manual in new_config["manuals"]:
-                if manual["filename"] == missing_filename:
+                if (manual["path"] + manual["filename"]) == missing_filename:
                     missing_manual = manual
             
             # Yes I understand this can never happen
@@ -205,12 +205,14 @@ def main(args):
     
     # Done down here AFTER the config load since we we'll be updating the config
     if args.get_manual_idxs and not args.overwrite_config:
+        print("Updating manual config json with current ghidra install")
         get_idx_files_headers(args.ghidra_path, config)
     
     if args.get_manual_idxs:
         print(f"\nDone updating {CONFIG_FILE}.")
         exit()
 
+    print("Getting manuals...\n")
     for manual_idx, manual in enumerate(config['manuals']):
         if not ('path' in manual and 'filename' in manual and 'urls' in manual):
             print(f"Manual num: {manual_idx} does not have all proper fields. Skipping...\n")
