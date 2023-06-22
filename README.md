@@ -1,6 +1,8 @@
 # ghidra-manuals
 A way to download Ghidra processor manuals that should be future proof. When future versions of Ghidra add support for new processors and have new processor manuals, this program will be able to add those new manuals to its config to download later.
 
+Currently updated for **10.3.0**
+
 # How to Use
 
 Install dependencies
@@ -9,7 +11,7 @@ Install dependencies
 Run `get_ghidra_manuals.py` with your ghidra installation path. For example:
 
 ```
-./get_ghidra_manuals.py ~/ghidra_10.1.2
+./get_ghidra_manuals.py ~/ghidra_10.3.0
 ```
 
 The pdfs will be downloaded automatically and placed in the correct folders.
@@ -41,7 +43,7 @@ Which should give you one of the following outputs:
 
 ```shell
 # There was a new processor manual added:
- > ./get_ghidra_manuals.py ~/ghidra_10.1.5 --get-manual-idxs          
+ > ./get_ghidra_manuals.py ~/ghidra_10.3.1 --get-manual-idxs          
 Updated config with 1 configs.
 Manuals info dumped to config.json
 
@@ -52,7 +54,7 @@ or
 
 ```shell
 # No new processor manuals were added:
- > ./get_ghidra_manuals.py ~/ghidra_10.1.5 --get-manual-idxs          
+ > ./get_ghidra_manuals.py ~/ghidra_10.3.1 --get-manual-idxs          
 Did not update config.json as there were no missing manuals...
 
 Done updating config.json.
@@ -62,7 +64,6 @@ Done updating config.json.
 
 This project was originally created against ghidra 10.1.2 which had the 6805 processor folder which apparently no longer exists. If you get a warning about missing the 6805 folder, that's why.
 
-Currently the only missing manuals are:
- - HCS12 -- S12XCPUV2.pdf
+Currently there are no missing manuals.
 
 Please feel free to open a pull request to add more backup URLs to this project.
