@@ -14,8 +14,15 @@ manual_config_skel = {
     "info": "",
     "path": "",
     "filename": "",
-    "urls": []
+    "urls": [],
+    "invalid_urls": [],
+    "notes": ""
 }
+
+def bailout(msg):
+    print(f"Error: {msg}")
+    print("Bailing out...")
+    exit(-1)
 
 def get_real_path(path):
     idx_name = path.split("/")[-1]
@@ -50,7 +57,9 @@ def get_idx_files_headers(ghidra_path, current_config={}):
         for pattern_num, pattern in enumerate(patterns):
             if not ("start" in pattern and "end" in pattern and "field" in pattern):
                 print(f"Warning: Pattern num: {pattern_num} does not have all info.")
-            
+                print("Skipping...")
+                continue
+
             start, end, field = pattern["start"], pattern["end"], pattern["field"]
 
             try:
@@ -58,7 +67,8 @@ def get_idx_files_headers(ghidra_path, current_config={}):
                 cur_manual_config[field] = l[l.index(start)+len(start):l.index(end)]
             except ValueError as e:
                 print(f"Warning: Unable to find start ({start}) or end ({end}) in line: {l}")
-                print("Skipping...")
+                print("Using default")
+                cur_manual_config[field] = "UNKNOWN"
                 continue
         
         cur_manual_config["path"] = get_real_path(f"./{idx_path.relative_to(ghidra_path)}")
@@ -112,8 +122,15 @@ def check_folder_exists(folder_path, make=False):
         return True
     elif make:
         # TODO: Catch exceptions
-        pathlib.Path(folder_path).mkdir(folder_path, exist_ok=True, parents=True)
-        return True
+        try:
+            pathlib.Path(folder_path).mkdir(exist_ok=True, parents=True)
+            return True
+        except PermissionError as e:
+            print(f"Permission denied: {e}")
+        except FileNotFoundError as e:
+            print(f"File not found: {e}")
+        except OSError as e:
+            print(f"OS error: {e}")  # This will catch issues like invalid path characters
     
     return False
 
@@ -133,25 +150,27 @@ def use_pdf_cache(pdf_save_filepath):
 
     return pdf_content
 
-def download_pdf_and_store(urls, filename, file_path, no_cache):
-    check_folder_exists(SAVE_DIR, make=True)
-
-    pdf_save_filepath = f"{SAVE_DIR}/{filename}"
+def download_pdf_and_store(urls, filepath, filename, ghidra_path, no_cache):
+    check_folder_exists(f"{SAVE_DIR}/{filepath}", make=True)
+    
+    pdf_cache_save_filepath = f"{SAVE_DIR}/{filepath}/{filename}"
+    pdf_ghidra_save_filepath = f"{ghidra_path}/{filepath}/{filename}"
 
     # Try local cache first
-    pdf_content = use_pdf_cache(pdf_save_filepath) if not no_cache else None
+    pdf_content = use_pdf_cache(pdf_cache_save_filepath) if not no_cache else None
 
     if pdf_content is None:
         # Download from internet
         for url in urls:
             # Check return code to make sure it was a success
             try:
-                pdf_content = requests.get(url).content
+                pdf_content = requests.get(url, timeout=5).content
 
-                with open(pdf_save_filepath, "wb") as pdf_f:
+                # Store PDF in cache
+                with open(pdf_cache_save_filepath, "wb") as pdf_f:
                     pdf_f.write(pdf_content)
 
-                if check_file_is_pdf(pdf_save_filepath):
+                if check_file_is_pdf(pdf_cache_save_filepath):
                     break
                 else:
                     print(f"WARNING: File in url: {url} is not a PDF. Trying next URL.")
@@ -162,35 +181,34 @@ def download_pdf_and_store(urls, filename, file_path, no_cache):
         print(f"Found manual in cache. Using that instead. Delete file in {SAVE_DIR} if you'd like to redownload.")
 
     if pdf_content is None:
-        print(f"WARNING: Could not download filename: {filename} to place in {file_path}")
+        print(f"WARNING: Could not download filename: {filename} to place in {ghidra_path}/{filepath}")
         return False
 
-    with open(f"{file_path}/{filename}", "wb") as pdf_f:
+    if not check_folder_exists(f"{ghidra_path}/{filepath}"):
+        print(f"WARNING: Ghidra folder path for manual `{ghidra_path}/{filepath}` doesn't exist.")
+        return False
+
+    # Store PDF in ghidra path    
+    with open(pdf_ghidra_save_filepath, "wb") as pdf_f:
         pdf_f.write(pdf_content)
 
     return True
 
 def load_config():
     if not os.path.exists(CONFIG_FILE):
-        #TODO: Update this message when you combine get.py and get_ghidra_manuals.py"
-        print(f"Could not find config file {CONFIG_FILE}.")
         print("If it does not exist you can run get.py to create it but manually fill URLs.")
-        print("Exiting...")
-        exit(-1)
+        bailout(f"Could not find config file {CONFIG_FILE}.\n"
+                "If it does not exist you can run get.py to create it but manually fill URLs.")
     with open(CONFIG_FILE, "r") as config_f:
         return json.load(config_f)
 
 def main(args):
 
     if args.overwrite_config and not args.get_manual_idxs:
-        print(f"--overwrite-config flag must only be used with --get-manual-idxs flag.")
-        print("Exiting...")
-        exit(-1)
+        bailout(f"--overwrite-config flag must only be used with --get-manual-idxs flag.")
 
     if not check_folder_exists(pathlib.Path(args.ghidra_path + "/Ghidra/").as_posix()):
-        print("Ghidra path given does not contain a ghidra installation.")
-        print("Exiting...")
-        exit(-1)
+        bailout("Ghidra path given does not contain a ghidra installation.")
 
     # Get the new manual_idxs without worrying about if config.json is okay
     if args.overwrite_config and args.get_manual_idxs:
@@ -199,9 +217,7 @@ def main(args):
 
     config = load_config()
     if not (isinstance(config, dict) and 'manuals' in config):
-        print("Config file is not set up properly.")
-        print("Exiting...")
-        exit(-1)
+        bailout("Config file is not set up properly.")
     
     # Done down here AFTER the config load since we we'll be updating the config
     if args.get_manual_idxs and not args.overwrite_config:
@@ -210,7 +226,7 @@ def main(args):
     
     if args.get_manual_idxs:
         print(f"\nDone updating {CONFIG_FILE}.")
-        exit()
+        exit(0)
 
     print("Getting manuals...\n")
     for manual_idx, manual in enumerate(config['manuals']):
@@ -218,8 +234,10 @@ def main(args):
             print(f"Manual num: {manual_idx} does not have all proper fields. Skipping...\n")
             continue
         
-        filename, manual_file_path, urls = manual['filename'], f"{args.ghidra_path}/{manual['path']}", manual["urls"]
-        manual_file_path = pathlib.Path(manual_file_path).as_posix()
+        filename = manual['filename']
+        urls = manual["urls"]
+
+        manual_file_path = pathlib.Path(f"{args.ghidra_path}/{manual['path']}").as_posix()
 
         if not check_folder_exists(manual_file_path):
             print(f"WARNING: Could not find manual store path folder: {manual_file_path} for {filename}.")
@@ -227,10 +245,11 @@ def main(args):
             continue
 
         if not urls:
+            # In reality we could set urls = [""] so we always attempt cache first
             print(f"WARNING: {filename} does not have any URLs in its config. Skipping...\n")
             continue
 
-        if download_pdf_and_store(urls, filename, manual_file_path, args.no_cache):
+        if download_pdf_and_store(urls, manual['path'], filename, args.ghidra_path, args.no_cache):
             print(f"Successfully got manual: {filename}.\n")
         else:
             print(f"WARNING: Could not get manual: {filename}.\n")

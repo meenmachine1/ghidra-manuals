@@ -1,7 +1,7 @@
 # ghidra-manuals
 A way to download Ghidra processor manuals that should be future proof. When future versions of Ghidra add support for new processors and have new processor manuals, this program will be able to add those new manuals to its config to download later.
 
-Currently updated for **10.3.0**
+Currently updated for **11.2**
 
 # How to Use
 
@@ -11,10 +11,10 @@ Install dependencies
 Run `get_ghidra_manuals.py` with your ghidra installation path. For example:
 
 ```
-./get_ghidra_manuals.py ~/ghidra_10.3.0
+./get_ghidra_manuals.py ~/ghidra_11.2
 ```
 
-The pdfs will be downloaded automatically and placed in the correct folders.
+The pdfs will be downloaded automatically and placed in the correct folders. If already downloaded, it will used cached pdfs.
 
 # Usage
 
@@ -43,7 +43,7 @@ Which should give you one of the following outputs:
 
 ```shell
 # There was a new processor manual added:
- > ./get_ghidra_manuals.py ~/ghidra_10.3.1 --get-manual-idxs          
+ > ./get_ghidra_manuals.py ~/ghidra_11.2.1 --get-manual-idxs          
 Updated config with 1 configs.
 Manuals info dumped to config.json
 
@@ -54,7 +54,7 @@ or
 
 ```shell
 # No new processor manuals were added:
- > ./get_ghidra_manuals.py ~/ghidra_10.3.1 --get-manual-idxs          
+ > ./get_ghidra_manuals.py ~/ghidra_11.2.1 --get-manual-idxs          
 Did not update config.json as there were no missing manuals...
 
 Done updating config.json.
@@ -62,8 +62,16 @@ Done updating config.json.
 
 # Missing Manuals
 
-This project was originally created against ghidra 10.1.2 which had the 6805 processor folder which apparently no longer exists. If you get a warning about missing the 6805 folder, that's why.
+Currently there are missing manuals for:
+ - M16C
+  - M16C_60
+  - M16C_80
 
-Currently there are no missing manuals.
+For some reason they are hard to find. If anyone has these please let me know.
 
 Please feel free to open a pull request to add more backup URLs to this project.
+
+## Notes
+
+This project was originally created against ghidra 10.1.2 which had the 6805 processor folder which apparently no longer exists. If you get a warning about missing the 6805 folder, that's why.
+
