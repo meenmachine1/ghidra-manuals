@@ -2,7 +2,8 @@
 #  - Ghidra hasn't started referencing manuals that aren't in config.json
 #  - every manual can be downloaded and matches its pinned sha256
 #  - the installed manuals' pages line up with Ghidra's .idx files
-#  - no download URLs have died or started serving a different file
+#  - every release asset is up and matches its pinned sha256 (backup URLs
+#    that stopped working are only warnings, since some hosts block CI runners)
 # Scheduled runs open (or comment on) an issue when something fails.
 
 name: Check manuals
@@ -24,9 +25,9 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 

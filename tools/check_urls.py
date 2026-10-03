@@ -16,12 +16,15 @@ manual whose sha256 is in the manual's `sha256` list.
   first working URL (check that copy with verify_pages.py first).
 
 The result is written to updated_manuals.json, or back into the config with --write.
-Exits non-zero if any URL changed state, a release asset is missing, or a manual
-has no working URL.
+
+Exits non-zero if a release asset is missing or wrong, a manual isn't pinned, or a
+manual has no working URL at all. Backup URLs changing state are only warnings, since
+some hosts block datacenter IPs (e.g. CI runners); pass --strict to fail on those too.
 """
 
 import argparse
 import json
+import os
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -36,6 +39,12 @@ from ghidra_manuals.cli import (BUNDLED_CONFIG, accepted_hashes, fetch_manual, l
 
 OUTPUT_FILE = Path("updated_manuals.json")
 RETRIES = 2
+IN_GITHUB_ACTIONS = os.environ.get("GITHUB_ACTIONS") == "true"
+
+
+def report(level, msg):
+    """Print a problem, as a GitHub Actions annotation when running in CI."""
+    print(f"::{level}::{msg}" if IN_GITHUB_ACTIONS else msg)
 
 
 def check_url(manual, url):
@@ -66,6 +75,7 @@ def main():
     parser.add_argument("--config", type=Path, default=BUNDLED_CONFIG, help="config.json to check (default: bundled)")
     parser.add_argument("--write", action="store_true", help="Update the config in place")
     parser.add_argument("--pin", action="store_true", help="Pin manuals with no sha256 to their first working URL")
+    parser.add_argument("--strict", action="store_true", help="Also exit non-zero if any backup URL changed state")
     parser.add_argument("-j", "--jobs", type=int, default=4, help="Number of parallel downloads")
     args = parser.parse_args()
 
@@ -83,7 +93,7 @@ def main():
         hashes[i, url] = digest
 
     print()
-    problems = 0
+    problems, warnings = 0, 0
     for i, manual in enumerate(manuals):
         key = manual_key(manual)
         urls = manual.get("urls", [])
@@ -96,7 +106,7 @@ def main():
                 manual["sha256"] = [hashes[i, first_working]]
                 print(f"Pinned {key} to {first_working}")
             else:
-                print(f"Not pinned (no sha256): {key}")
+                report("error", f"Not pinned (no sha256): {key}")
                 problems += 1
 
         expected = accepted_hashes(manual)
@@ -110,18 +120,22 @@ def main():
         new_urls = [url for url in all_urls if is_valid[url]]
         new_invalid = [url for url in all_urls if not is_valid[url]]
         if new_urls != urls or new_invalid != invalid_urls:
-            print(f"URLs changed: {key}")
-            problems += 1
+            dead = [url for url in urls if not is_valid[url]]
+            revived = [url for url in invalid_urls if is_valid[url]]
+            report("warning", f"Backup URLs changed for {key}: "
+                              f"{len(dead)} stopped working, {len(revived)} working again "
+                              f"(may just be blocked from this IP)")
+            warnings += 1
         manual["urls"], manual["invalid_urls"] = new_urls, new_invalid
 
         mirror_ok = hashes[i, mirror_url(manual)] is not None and \
             (not expected or hashes[i, mirror_url(manual)] in expected)
         if not mirror_ok:
-            print(f"Release asset missing or wrong: {key}\n  {mirror_url(manual)}")
+            report("error", f"Release asset missing or wrong: {key} ({mirror_url(manual)})")
             problems += 1
 
         if not new_urls and not mirror_ok:
-            print(f"No working URLs: {key}")
+            report("error", f"No working URLs: {key}")
 
     if args.write:
         save_config(config, args.config)
@@ -131,8 +145,8 @@ def main():
             out_f.write("\n")
         print(f"\nSaved to '{OUTPUT_FILE}'.")
 
-    print(f"{problems} problem(s) found.")
-    sys.exit(1 if problems else 0)
+    print(f"{problems} problem(s), {warnings} backup URL warning(s).")
+    sys.exit(1 if problems or (args.strict and warnings) else 0)
 
 
 if __name__ == "__main__":
