@@ -5,17 +5,23 @@ Currently updated for **12.1** (all 43 manuals referenced by Ghidra 12.1.4 are a
 
 # How to Use
 
-With [uv](https://docs.astral.sh/uv/), no clone or virtualenv needed:
+Using [uv](https://docs.astral.sh/uv/):
 
 ```
 uvx --from git+https://github.com/meenmachine1/ghidra-manuals ghidra-manuals ~/ghidra_12.1.4_PUBLIC
 ```
 
-Or install it with pipx (`pipx install git+https://github.com/meenmachine1/ghidra-manuals`) or pip, then run `ghidra-manuals ~/ghidra_12.1.4_PUBLIC`. If `$GHIDRA_INSTALL_DIR` is set, the path can be left out.
+Using pipx or pip:
 
-From a clone, `pip3 install -r requirements.txt` then `./get_ghidra_manuals.py ~/ghidra_12.1.4_PUBLIC` still works.
+```
+pipx install git+https://github.com/meenmachine1/ghidra-manuals
+```
 
-ghidra-manuals reads the `.idx` files in your Ghidra install to find which manuals it needs, downloads each one and places it in the correct folder. Every manual is checked against the sha256 of the revision Ghidra's `.idx` was made from, so a wrong revision (which would open on the wrong pages) is never installed. Manuals are downloaded from the [ghidra-processor-manuals](https://github.com/meenmachine1/ghidra-processor-manuals/releases/tag/manuals) release first, then from the backup URLs in `config.json`. Downloads are cached in `~/.cache/ghidra-manuals` and manuals that are already installed are skipped. It exits non-zero and lists the manuals it couldn't get if any are missing.
+Then run `ghidra-manuals ~/ghidra_12.1.4_PUBLIC`. If `$GHIDRA_INSTALL_DIR` is set, the path can be left out.
+
+From a clone, `pip3 install -r requirements.txt` then `./get_ghidra_manuals.py ~/ghidra_12.1.4_PUBLIC`
+
+ghidra-manuals reads the `.idx` files in your Ghidra install to find which manuals it needs, downloads each one and places it in the correct folder. Every manual is checked against the sha256 of the revision Ghidra's `.idx` was made from. Manuals are downloaded from the [ghidra-processor-manuals](https://github.com/meenmachine1/ghidra-processor-manuals/releases/tag/manuals) release first, then from the backup URLs in `config.json`. Downloads are cached in `~/.cache/ghidra-manuals` and manuals that are already installed are skipped. It exits non-zero and lists the manuals it couldn't get if any are missing.
 
 # Usage
 
@@ -69,6 +75,8 @@ Then for each new entry:
 2. Install it and run `tools/verify_pages.py <ghidra_dir>` to make sure it's the revision the `.idx` was made from.
 3. Run `tools/check_urls.py --pin --write` to pin its `sha256`.
 4. Run `tools/publish_mirror.py --upload` to add it to the ghidra-processor-manuals release.
+
+If you do this, please open an issue so it can be adde to the repo (if the manual/ver is not already in here).
 
 # config.json
 
