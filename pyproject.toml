@@ -1,0 +1,24 @@
+[project]
+name = "ghidra-manuals"
+version = "1.0.0"
+description = "Download Ghidra processor manuals into a Ghidra installation."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.25",
+    "pypdf>=4.0",
+]
+
+[project.scripts]
+ghidra-manuals = "ghidra_manuals.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/meenmachine1/ghidra-manuals"
+Manuals = "https://github.com/meenmachine1/ghidra-processor-manuals"
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+ghidra_manuals = ["config.json"]

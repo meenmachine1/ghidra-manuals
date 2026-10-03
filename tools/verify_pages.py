@@ -25,8 +25,9 @@ import sys
 from functools import lru_cache
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from get_ghidra_manuals import IDX_GLOB, IDX_HEADER_RE, read_idx_header  # noqa: E402
+# Use the checkout's package if ghidra-manuals isn't installed
+sys.path.insert(1, str(Path(__file__).resolve().parent.parent / "src"))
+from ghidra_manuals.cli import IDX_GLOB, IDX_HEADER_RE, read_idx_header  # noqa: E402
 
 LOOKAHEAD_PAGES = 3
 
@@ -107,6 +108,8 @@ def main():
     parser.add_argument("ghidra_path", help="Path to ghidra installation", metavar="~/ghidra_xx.xx")
     parser.add_argument("--min-match", type=float, default=0.9,
                         help="Fraction of idx entries (that appear somewhere in the PDF) that must be on the right page (default 0.9)")
+    parser.add_argument("--expect-fail", action="append", default=[], metavar="IDX",
+                        help="Name of an .idx file (e.g. HCS12.idx) that is known to fail. Can be repeated")
     args = parser.parse_args()
 
     if not shutil.which("pdftotext"):
@@ -120,10 +123,12 @@ def main():
     bad = 0
     for idx_path in idx_paths:
         status, detail = verify_idx(idx_path, args.min_match)
+        if idx_path.name in args.expect_fail:
+            status = {"FAIL": "XFAIL", "OK": "XPASS"}.get(status, status)
         bad += status in ("ERROR", "MISSING", "FAIL")
         print(f"{status:8} {idx_path.relative_to(ghidra_path)}: {detail}", flush=True)
 
-    print(f"\n{len(idx_paths) - bad}/{len(idx_paths)} idx files OK or uncheckable.")
+    print(f"\n{len(idx_paths) - bad}/{len(idx_paths)} idx files OK, uncheckable or expected to fail.")
     sys.exit(1 if bad else 0)
 
 

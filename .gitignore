@@ -1,14 +1,18 @@
-# Cache
+# Old download cache location (now ~/.cache/ghidra-manuals)
 pdfs/
 __pycache__/
 
-#virtualenv
+# virtualenv
 .venv
 
-!**/.gitempty
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Tool output
+updated_manuals.json
+release_assets/
 
 # Mac BS
 .DS_Store
-
-# tools/check_urls.py output
-updated_manuals.json
