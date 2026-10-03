@@ -9,3 +9,6 @@ __pycache__/
 
 # Mac BS
 .DS_Store
+
+# tools/check_urls.py output
+updated_manuals.json
